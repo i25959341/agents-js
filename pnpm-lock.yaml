@@ -200,6 +200,9 @@ importers:
       '@livekit/agents-plugin-silero':
         specifier: workspace:*
         version: link:../plugins/silero
+      '@livekit/agents-plugin-speechmatics':
+        specifier: workspace:*
+        version: link:../plugins/speechmatics
       '@livekit/noise-cancellation-node':
         specifier: ^0.1.9
         version: 0.1.9
@@ -578,6 +581,46 @@ importers:
       onnxruntime-common:
         specifier: 1.21.0
         version: 1.21.0
+      tsup:
+        specifier: ^8.3.5
+        version: 8.4.0(@microsoft/api-extractor@7.43.7(@types/node@22.15.30))(postcss@8.4.38)(tsx@4.20.4)(typescript@5.4.5)
+      typescript:
+        specifier: ^5.0.0
+        version: 5.4.5
+
+  plugins/speechmatics:
+    dependencies:
+      '@speechmatics/auth':
+        specifier: ^0.1.0
+        version: 0.1.0
+      '@speechmatics/real-time-client':
+        specifier: ^7.0.2
+        version: 7.0.2
+      ws:
+        specifier: ^8.16.0
+        version: 8.18.3
+    devDependencies:
+      '@livekit/agents':
+        specifier: workspace:*
+        version: link:../../agents
+      '@livekit/agents-plugin-openai':
+        specifier: workspace:*
+        version: link:../openai
+      '@livekit/agents-plugin-silero':
+        specifier: ^1.0.8
+        version: 1.0.8(@livekit/agents@agents)(@livekit/rtc-node@0.13.13)
+      '@livekit/agents-plugins-test':
+        specifier: workspace:*
+        version: link:../test
+      '@livekit/rtc-node':
+        specifier: ^0.13.12
+        version: 0.13.13
+      '@microsoft/api-extractor':
+        specifier: ^7.35.0
+        version: 7.43.7(@types/node@22.15.30)
+      '@types/ws':
+        specifier: ^8.5.10
+        version: 8.5.10
       tsup:
         specifier: ^8.3.5
         version: 8.4.0(@microsoft/api-extractor@7.43.7(@types/node@22.15.30))(postcss@8.4.38)(tsx@4.20.4)(typescript@5.4.5)
@@ -1430,6 +1473,12 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
+  '@livekit/agents-plugin-silero@1.0.8':
+    resolution: {integrity: sha512-jXhavW+EqzCbJ23taB05jup1/KOnhXP+K5cW6LUjqWT26v95BXCiBbxsmmnmYKA4/VEOaUlplz8pIuYnKiYiFw==}
+    peerDependencies:
+      '@livekit/agents': 1.0.8
+      '@livekit/rtc-node': ^0.13.12
+
   '@livekit/changesets-changelog-github@0.0.4':
     resolution: {integrity: sha512-MXaiLYwgkYciZb8G2wkVtZ1pJJzZmVx5cM30Q+ClslrIYyAqQhRbPmZDM79/5CGxb1MTemR/tfOM25tgJgAK0g==}
 
@@ -1800,6 +1849,12 @@ packages:
 
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
+
+  '@speechmatics/auth@0.1.0':
+    resolution: {integrity: sha512-vF1XOFlAtbNSWYsuJm9WDAZfZIOpwibgqu0sH/Qqkbyz2w/EQyoIhlKta8KRVZ74JeKyY08mnGQ17WDj6i6U4Q==}
+
+  '@speechmatics/real-time-client@7.0.2':
+    resolution: {integrity: sha512-/I0MdO5p9yOhoDjgcRXf0span/SHZfcLyw22Bo6RwMOU/vMCgtcbH6i8e9Ak+YrbnboSt0INUQe2W5cUJc7S4g==}
 
   '@trivago/prettier-plugin-sort-imports@4.3.0':
     resolution: {integrity: sha512-r3n0onD3BTOVUNPhR4lhVK4/pABGpbA7bW3eumZnYdKaHkf1qEC+Mag6DPbGNuuh0eG8AaYj+YqmVHSiGslaTQ==}
@@ -4265,6 +4320,9 @@ packages:
     peerDependencies:
       typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x
 
+  typescript-event-target@1.1.1:
+    resolution: {integrity: sha512-dFSOFBKV6uwaloBCCUhxlD3Pr/P1a/tJdcmPrTXCHlEFD3faj0mztjcGn6VBAhQ0/Bdy8K3VWrrqwbt/ffsYsg==}
+
   typescript@5.4.2:
     resolution: {integrity: sha512-+2/g0Fds1ERlP6JsakQQDXjZdZMM+rqpamFZJEKh4kwTIn3iDkgKtby0CeNd5ATNZ4Ry1ax15TMx0W2V+miizQ==}
     engines: {node: '>=14.17'}
@@ -5195,6 +5253,16 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
+  '@livekit/agents-plugin-silero@1.0.8(@livekit/agents@agents)(@livekit/rtc-node@0.13.13)':
+    dependencies:
+      '@livekit/agents': link:agents
+      '@livekit/rtc-node': 0.13.13
+      onnxruntime-node: 1.21.0
+      ws: 8.18.3
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   '@livekit/changesets-changelog-github@0.0.4':
     dependencies:
       '@changesets/get-github-info': 0.5.2
@@ -5538,6 +5606,16 @@ snapshots:
       - '@types/node'
 
   '@sinclair/typebox@0.27.8': {}
+
+  '@speechmatics/auth@0.1.0': {}
+
+  '@speechmatics/real-time-client@7.0.2':
+    dependencies:
+      typescript-event-target: 1.1.1
+      ws: 8.18.3
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
 
   '@trivago/prettier-plugin-sort-imports@4.3.0(prettier@3.2.5)':
     dependencies:
@@ -8354,6 +8432,8 @@ snapshots:
       minimatch: 9.0.4
       shiki: 0.14.7
       typescript: 5.4.5
+
+  typescript-event-target@1.1.1: {}
 
   typescript@5.4.2: {}
 
